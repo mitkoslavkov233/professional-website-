@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dimitar Slavkov Dimitrov — Cover Letter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --page-bg: #16181d;
+    --ink: #1c1a17;
+    --paper: #f4f0e8;
+    --accent: #cf522c;
+    --serif: "Playfair Display", Georgia, serif;
+    --sans: "Hanken Grotesk", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--page-bg);
+    font-family: var(--sans);
+    color: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100vh;
+  }
+
+  .topbar {
+    max-width: 820px; margin: 0 auto; padding: 22px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .back {
+    color: var(--paper); text-decoration: none; opacity: 0.7;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.04em; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 8px; transition: opacity .2s, gap .2s;
+  }
+  .back:hover { opacity: 1; gap: 12px; }
+  .print-btn {
+    font-family: var(--sans); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.03em; cursor: pointer; white-space: nowrap;
+    color: #16181d; background: var(--paper); border: none;
+    padding: 9px 18px; border-radius: 999px; transition: transform .2s, background .2s;
+  }
+  .print-btn:hover { transform: translateY(-1px); background: #fff; }
+
+  .sheet {
+    max-width: 820px; margin: 6px auto 70px;
+    background: var(--paper); color: var(--ink);
+    border-radius: 22px; overflow: hidden;
+    box-shadow: 0 40px 90px -50px rgba(0,0,0,0.7);
+  }
+  .sheet-inner { padding: 72px clamp(36px, 7vw, 88px) 64px; }
+
+  .letterhead {
+    padding-bottom: 26px;
+    border-bottom: 1px solid color-mix(in oklab, var(--ink), transparent 86%);
+  }
+  .letterhead .name {
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(32px, 4.6vw, 46px); line-height: 1.02; letter-spacing: -0.01em;
+  }
+  .letterhead .role {
+    font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--accent); margin-top: 14px;
+  }
+  .letterhead .lh-meta {
+    font-size: 13.5px; line-height: 1.6; opacity: 0.6; margin-top: 14px;
+  }
+
+  .salutation { margin-top: 40px; font-size: 18px; font-weight: 600; }
+
+  .letter p {
+    font-size: 16.5px; line-height: 1.72; margin-top: 20px;
+    max-width: 64ch; text-wrap: pretty;
+  }
+  .letter p .lead {
+    font-weight: 700; color: var(--accent);
+  }
+  .editable {
+    border-bottom: 1.5px dashed color-mix(in oklab, var(--accent), transparent 40%);
+    padding-bottom: 1px;
+  }
+
+  .signoff { margin-top: 34px; }
+  .signoff .name {
+    font-family: var(--serif); font-size: 26px; margin-top: 6px;
+  }
+  .sheet-foot {
+    margin-top: 40px; padding-top: 22px;
+    border-top: 1px solid color-mix(in oklab, var(--ink), transparent 86%);
+    font-size: 13px; opacity: 0.6;
+    display: flex; gap: 8px 18px; flex-wrap: wrap;
+  }
+  .sheet-foot a { color: inherit; }
+
+  @media print {
+    @page { margin: 18mm; }
+    body { background: #fff; }
+    .topbar { display: none; }
+    .sheet { box-shadow: none; border-radius: 0; margin: 0; max-width: none; }
+    .sheet-inner { padding: 0; }
+    .editable { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+
+  <template id="__bundler_thumbnail" data-bg-color="#16181d">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#16181d"/>
+      <rect x="360" y="200" width="480" height="400" rx="16" fill="#f4f0e8"/>
+      <rect x="420" y="280" width="220" height="22" rx="11" fill="#cf522c"/>
+      <rect x="420" y="340" width="360" height="12" rx="6" fill="#9a958b"/>
+      <rect x="420" y="372" width="360" height="12" rx="6" fill="#9a958b"/>
+      <rect x="420" y="404" width="300" height="12" rx="6" fill="#9a958b"/>
+      <rect x="420" y="470" width="360" height="12" rx="6" fill="#9a958b"/>
+      <rect x="420" y="502" width="240" height="12" rx="6" fill="#9a958b"/>
+    </svg>
+  </template>
+
+  <div class="topbar">
+    <a class="back" href="Resume.html">← Back to CV</a>
+    <button class="print-btn" onclick="window.print()">Save as PDF</button>
+  </div>
+
+  <article class="sheet">
+    <div class="sheet-inner">
+
+      <header class="letterhead">
+        <div class="name">Dimitar Slavkov Dimitrov</div>
+        <div class="role">Cover Letter · Senior Project Manager</div>
+        <div class="lh-meta">Sofia, Bulgaria · Available within 1–2 months · mitko.slavkov@gmail.com</div>
+      </header>
+
+      <p class="salutation">Dear hiring team,</p>
+
+      <div class="letter">
+        <p>You’re looking for a Senior Project Manager who can own client relationships, keep remote delivery teams aligned across multiple projects, and help junior team members grow. I’ve been doing exactly that for seven years. Let me be direct about how.</p>
+
+        <p><span class="lead">Client ownership.</span> At Athlon I was the primary point of contact for multiple enterprise clients simultaneously — not a relay between the client and internal teams, but the person who understood each client’s business well enough to make decisions, manage expectations and keep trust intact through the difficult moments. Clients didn’t escalate past me, because they didn’t need to.</p>
+
+        <p><span class="lead">Remote delivery.</span> I’ve managed distributed and hybrid teams across time zones for most of my career. Sprint planning, retrospectives, daily standups, scope management, risk tracking — all of it running in parallel across different accounts, tech stacks and stakeholder personalities. The coordination overhead that breaks a lot of PMs is where I tend to do my best work.</p>
+
+        <p><span class="lead">Growing the team.</span> This one matters to me personally. I built a monthly skills-development programme for junior PMs, producers and QA from scratch. Every month I picked an agile topic, built a short presentation around it, and we worked through it together. It started informal and became a fixture in how the team operates. Delivery quality is a team property, not just a PM’s.</p>
+
+        <p>What draws me to <span class="editable">this role</span> is the model itself. Building dedicated delivery teams for clients and keeping them performing over time is a genuinely hard problem — and one I understand from both sides. I’ve spent seven years being the person who makes that kind of arrangement work for the client. I know what good looks like, I know what breaks it, and I know how to fix it when it does.</p>
+
+        <p>I’d be glad to talk through any of this in more detail.</p>
+      </div>
+
+      <div class="signoff">
+        <span>Warm regards,</span>
+        <div class="name">Dimitar Slavkov Dimitrov</div>
+      </div>
+
+      <div class="sheet-foot">
+        <span>Sofia, Bulgaria</span>
+        <span>·</span>
+        <span>Available within 1–2 months</span>
+        <span>·</span>
+        <a href="https://www.linkedin.com/in/dimitar-dimitrov-77460396/" target="_blank" rel="noopener">linkedin.com/in/dimitar-dimitrov-77460396</a>
+      </div>
+
+    </div>
+  </article>
+
+</body>
+</html>

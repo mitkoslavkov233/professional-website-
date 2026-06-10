@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dimitar Slavkov Dimitrov — Senior Project Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  :root {
+    --page-bg: #0b0b0c;
+    --page-fg: #f3f1ec;
+    --radius: 30px;
+    --container: 1120px;
+    --serif-display: "Libre Caslon Display", Georgia, serif;
+    --serif-text: "Libre Caslon Text", Georgia, serif;
+    --sans: "Hanken Grotesk", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--page-bg);
+    color: var(--page-fg);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  html { overflow-x: hidden; }
+
+  .wrap { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px);
+    background: color-mix(in oklab, var(--page-bg), transparent 22%);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+    max-width: calc(var(--container) + 48px);
+  }
+  .monogram {
+    font-family: var(--serif-display);
+    font-size: 26px; letter-spacing: 0.5px;
+    line-height: 1; user-select: none;
+  }
+  .nav-links { display: flex; gap: 30px; }
+  .nav-links a {
+    color: var(--page-fg); text-decoration: none;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; opacity: 0.62; transition: opacity .2s; white-space: nowrap;
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta {
+    font-family: var(--sans); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.04em; text-decoration: none;
+    color: #0b0b0c; background: var(--page-fg);
+    padding: 10px 18px; border-radius: 999px; white-space: nowrap;
+    transition: transform .2s, background .2s;
+  }
+  .nav-cta:hover { transform: translateY(-1px); background: #fff; }
+  @media (max-width: 720px) { .nav-links { display: none; } }
+
+  /* ---------- HERO ---------- */
+  .hero { text-align: center; padding: 72px 24px 30px; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    opacity: 0.5; font-weight: 600; margin-bottom: 26px;
+  }
+  .hero h1 {
+    font-family: var(--serif-display);
+    font-weight: 400;
+    font-size: clamp(64px, 13vw, 168px);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 .ln2 { display: block; }
+  .hero-tag {
+    margin: 30px auto 0; max-width: 540px;
+    font-size: 17px; line-height: 1.5; opacity: 0.7;
+    text-wrap: pretty;
+  }
+
+  /* ---------- FILTERS ---------- */
+  .filters {
+    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+    margin: 40px auto 0;
+  }
+  .filters button {
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--page-fg); background: transparent;
+    border: 1px solid rgba(255,255,255,0.16);
+    padding: 9px 20px; border-radius: 999px; cursor: pointer;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .filters button:hover { border-color: rgba(255,255,255,0.4); }
+  .filters button.active {
+    background: var(--page-fg); color: #0b0b0c; border-color: var(--page-fg);
+  }
+
+  /* ---------- CARDS ---------- */
+  .cards { padding: 44px 24px 60px; display: flex; flex-direction: column; gap: 22px; max-width: calc(var(--container) + 48px); margin: 0 auto; }
+
+  .card {
+    --pad: 56px;
+    position: relative;
+    background: var(--bg);
+    color: var(--fg);
+    border-radius: var(--radius);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 460px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body.anim .card.in { animation: cardRise .6s ease both; }
+  }
+  @keyframes cardRise {
+    from { transform: translateY(24px); }
+    to   { transform: none; }
+  }
+  .card.reverse .card-text { order: 2; }
+  .card.reverse .card-visual { order: 1; }
+
+  .card-text {
+    padding: var(--pad);
+    display: flex; flex-direction: column;
+    justify-content: center;
+    position: relative; z-index: 3;
+  }
+  .card-date {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; opacity: 0.62; margin-bottom: 20px;
+  }
+  .card h2 {
+    font-family: var(--serif-text); font-weight: 700;
+    font-size: clamp(30px, 3vw, 40px); line-height: 1.04;
+    letter-spacing: -0.01em; margin-bottom: 20px;
+    text-wrap: balance;
+  }
+  .card h2 .role-at { font-style: italic; font-weight: 400; opacity: 0.78; }
+  .card p {
+    font-size: 15.5px; line-height: 1.6; max-width: 42ch;
+    opacity: 0.86; text-wrap: pretty;
+  }
+  .card .meta {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px;
+  }
+  .card .chip {
+    font-size: 12.5px; font-weight: 600; letter-spacing: 0.01em;
+    padding: 6px 13px; border-radius: 999px;
+    background: color-mix(in oklab, var(--fg), transparent 84%);
+    border: 1px solid color-mix(in oklab, var(--fg), transparent 78%);
+  }
+  .card .card-link {
+    margin-top: 28px; align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 600; text-decoration: none;
+    color: var(--fg);
+    border-bottom: 1.5px solid currentColor;
+    padding-bottom: 2px;
+    transition: gap .2s;
+  }
+  .card .card-link:hover { gap: 13px; }
+
+  /* card visual */
+  .card-visual { position: relative; overflow: hidden; }
+  .blob {
+    position: absolute; border-radius: 50%;
+    background: var(--shape); z-index: 1; pointer-events: none;
+  }
+  .ph {
+    position: absolute; z-index: 2; border-radius: 16px; overflow: hidden;
+    background-image:
+      repeating-linear-gradient(135deg,
+        color-mix(in oklab, var(--fg), transparent 88%) 0 10px,
+        transparent 10px 20px);
+    background-color: color-mix(in oklab, var(--bg), black 6%);
+    border: 1px solid color-mix(in oklab, var(--fg), transparent 80%);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 24px 60px -28px rgba(0,0,0,0.55);
+  }
+  .ph span {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    opacity: 0.7; background: color-mix(in oklab, var(--bg), black 4%);
+    padding: 5px 10px; border-radius: 6px;
+  }
+
+  @media (max-width: 760px) {
+    .card { grid-template-columns: 1fr; min-height: 0; }
+    .card.reverse .card-text { order: 2; }
+    .card.reverse .card-visual { order: 1; }
+    .card-text { order: 2; padding: 36px; }
+    .card-visual { order: 1; height: 300px; }
+    .card { --pad: 36px; }
+  }
+
+  /* ---------- LOAD MORE ---------- */
+  .more-row { display: flex; justify-content: center; padding: 6px 0 70px; }
+  .more-row button {
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    color: var(--page-fg); background: transparent;
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 13px 28px; border-radius: 999px; cursor: pointer;
+    transition: background .2s, color .2s;
+  }
+  .more-row button:hover { background: var(--page-fg); color: #0b0b0c; }
+
+  /* ---------- FOOTER ---------- */
+  footer { border-top: 1px solid rgba(255,255,255,0.08); padding: 56px 24px 40px; }
+  .foot-grid {
+    display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 40px;
+  }
+  .foot-mono { font-family: var(--serif-display); font-size: 30px; }
+  .foot-col h4 {
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    opacity: 0.45; font-weight: 700; margin-bottom: 16px;
+  }
+  .foot-col a {
+    display: block; color: var(--page-fg); text-decoration: none;
+    font-size: 14.5px; opacity: 0.72; margin-bottom: 11px; transition: opacity .2s;
+  }
+  .foot-col a:hover { opacity: 1; }
+  .foot-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 54px; padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 13px; opacity: 0.5; flex-wrap: wrap; gap: 12px;
+  }
+  @media (max-width: 720px) {
+    .foot-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+  }
+
+  /* ---------- BULLETS ---------- */
+  .card ul.bullets { list-style: none; margin-top: 4px; display: flex; flex-direction: column; gap: 11px; max-width: 46ch; }
+  .card ul.bullets li { position: relative; padding-left: 20px; font-size: 15px; line-height: 1.5; opacity: 0.9; text-wrap: pretty; }
+  .card ul.bullets li::before { content: ""; position: absolute; left: 2px; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: 0.5; }
+
+  /* ---------- GENERATIVE ART ---------- */
+  .card-visual .art { position: absolute; inset: 0; z-index: 1; }
+  .card-visual .art svg { width: 100%; height: 100%; display: block; }
+
+  /* ---------- MATCHUP CARD ---------- */
+  .card.matchup { display: block; grid-template-columns: 1fr; min-height: 0; }
+  .card.matchup .mh { padding: 50px 56px 6px; }
+  .card.matchup .mh h2 { margin-bottom: 0; font-size: clamp(30px, 3.4vw, 44px); }
+  .mrows { padding: 18px 56px 50px; }
+  .mhead-row { display: grid; grid-template-columns: 1fr 1.25fr; gap: 36px; padding-bottom: 4px; }
+  .mhead-row span { font-size: 11.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .mhead-row .l { opacity: 0.45; }
+  .mhead-row .r { color: var(--acc); }
+  .mrow { display: grid; grid-template-columns: 1fr 1.25fr; gap: 36px; padding: 20px 0; align-items: baseline;
+    border-top: 1px solid color-mix(in oklab, var(--fg), transparent 86%); }
+  .mrow .need { font-size: 15px; line-height: 1.45; opacity: 0.62; }
+  .mrow .bring { font-size: 16.5px; line-height: 1.5; font-weight: 600; text-wrap: pretty; }
+  @media (max-width: 680px) {
+    .card.matchup .mh { padding: 36px 32px 4px; }
+    .mrows { padding: 12px 32px 36px; }
+    .mhead-row { display: none; }
+    .mrow { grid-template-columns: 1fr; gap: 6px; padding: 16px 0; }
+    .mrow .need { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.5; }
+  }
+</style>
+</head>
+<body>
+
+  <template id="__bundler_thumbnail" data-bg-color="#16181d">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#16181d"/>
+      <text x="600" y="380" font-family="Playfair Display, Georgia, serif" font-size="150" fill="#f3f1ec" text-anchor="middle">Dimitar</text>
+      <text x="600" y="510" font-family="Playfair Display, Georgia, serif" font-size="150" fill="#f3f1ec" text-anchor="middle">Dimitrov</text>
+      <rect x="470" y="590" width="260" height="46" rx="23" fill="#e1613e"/>
+    </svg>
+  </template>
+
+  <header class="nav">
+    <div class="wrap">
+      <nav class="nav-links">
+        <a href="#work">Experience</a>
+        <a href="#about">About</a>
+        <a href="Cover-Letter.html">Cover Letter</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="#">Download CV</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">Curriculum Vitae · 2026</div>
+    <h1>Dimitar<span class="ln2">Dimitrov</span></h1>
+    <p class="hero-tag">Senior project &amp; program manager — seven years owning multi-client delivery, remote teams, and the people who make it work. Sofia, Bulgaria · open to relocation &amp; remote.</p>
+    <div class="filters" id="filters">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="experience">Experience</button>
+      <button data-filter="highlights">Highlights</button>
+      <button data-filter="more">More</button>
+    </div>
+  </section>
+
+  <main class="cards" id="cards">
+
+    <!-- PROFILE -->
+    <article class="card" id="about" data-cat="more"
+      style="--bg:#aab6ef; --fg:#15163a; --shape:#8e9be8;">
+      <div class="card-text">
+        <span class="card-date">Profile</span>
+        <h2>A decade making delivery actually work</h2>
+        <p>I’ve spent the last decade across customer experience, enterprise operations and digital delivery. The common thread: making sure what gets built actually solves the problem — and that the people involved can trust each other the whole way through. Over seven years at Athlon I grew from junior PM into program management, and I’m the person clients call when something needs untangling.</p>
+        <a class="card-link" href="#contact">Get in touch →</a>
+      </div>
+      <div class="card-visual"><div class="art" data-art="rings" data-accent="#2f3a8f"></div></div>
+    </article>
+
+    <!-- MATCHUP -->
+    <article class="card matchup" data-cat="highlights"
+      style="--bg:#ece7db; --fg:#1c1a17; --acc:#cf522c;">
+      <div class="mh">
+        <span class="card-date">Fit at a glance</span>
+        <h2>What you need. What I bring.</h2>
+      </div>
+      <div class="mrows">
+        <div class="mhead-row"><span class="l">What you need</span><span class="r">What I bring</span></div>
+        <div class="mrow">
+          <div class="need">Someone who owns client relationships end-to-end</div>
+          <div class="bring">Seven years as primary point of contact for multiple enterprise clients at once — no escalation required.</div>
+        </div>
+        <div class="mrow">
+          <div class="need">Delivery running across distributed remote teams</div>
+          <div class="bring">Managed remote and hybrid teams across time zones — sprint cadences, retros and stakeholder comms running in parallel across accounts.</div>
+        </div>
+        <div class="mrow">
+          <div class="need">A PM who grows the team around them</div>
+          <div class="bring">Built and ran a monthly coaching programme for junior PMs, producers and QA — from scratch.</div>
+        </div>
+        <div class="mrow">
+          <div class="need">Agile delivery that works in practice</div>
+          <div class="bring">Not just familiar with Scrum — facilitating it daily for seven years across diverse client environments.</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ATHLON -->
+    <article class="card reverse" id="work" data-cat="experience"
+      style="--bg:#e1613e; --fg:#fdeee7; --shape:#c84d2e;">
+      <div class="card-text">
+        <span class="card-date">2018 — Present · Athlon · Digital Agency</span>
+        <h2>Program Manager <span class="role-at">/ Senior PM</span></h2>
+        <ul class="bullets">
+          <li>Primary point of contact for multiple enterprise clients simultaneously — owning relationships, expectations and trust.</li>
+          <li>Led biweekly and monthly delivery calls: agendas, retrospectives and scope across complex engagements.</li>
+          <li>Built and ran a monthly skills programme for producers, PMs and QA, from scratch.</li>
+          <li>Owned the full lifecycle — discovery, scoping, sprint management, client comms and close-out.</li>
+        </ul>
+        <div class="meta">
+          <span class="chip">Jira</span>
+          <span class="chip">Confluence</span>
+          <span class="chip">Scrum</span>
+          <span class="chip">Remote teams</span>
+        </div>
+      </div>
+      <div class="card-visual"><div class="art" data-art="columns" data-accent="#f4c84d"></div></div>
+    </article>
+
+    <!-- SKILLS PROGRAMME -->
+    <article class="card" data-cat="highlights"
+      style="--bg:#e8aa38; --fg:#3a2705; --shape:#d6962a;">
+      <div class="card-text">
+        <span class="card-date">Initiative I’m proud of</span>
+        <h2>A monthly skills programme, built from scratch</h2>
+        <p>Every month I pick an agile topic, build a short presentation around it, and the delivery team — producers, PMs and QA — works through it together. It started informal and became a fixture in how the team operates. I believe delivery quality is a team property, not just a PM’s.</p>
+        <div class="meta">
+          <span class="chip">Coaching</span>
+          <span class="chip">Facilitation</span>
+          <span class="chip">Team development</span>
+        </div>
+      </div>
+      <div class="card-visual"><div class="art" data-art="orbit" data-accent="#1f6b54"></div></div>
+    </article>
+
+    <!-- HP AFFILIATE -->
+    <article class="card reverse" data-cat="experience"
+      style="--bg:#2e7d6f; --fg:#e8f5f0; --shape:#246357;">
+      <div class="card-text">
+        <span class="card-date">2017 — 2018 · HP Affiliate Company</span>
+        <h2>Project Manager</h2>
+        <ul class="bullets">
+          <li>Established my first structured PM practice outside an agency context.</li>
+          <li>Hands-on with oversight, governance and accountability inside a large corporate structure.</li>
+        </ul>
+        <div class="meta">
+          <span class="chip">Governance</span>
+          <span class="chip">Enterprise process</span>
+        </div>
+      </div>
+      <div class="card-visual"><div class="art" data-art="arcs" data-accent="#ffd66b"></div></div>
+    </article>
+
+    <!-- IBM -->
+    <article class="card" data-cat="experience"
+      style="--bg:#c6d84a; --fg:#262d05; --shape:#b3c53a;">
+      <div class="card-text">
+        <span class="card-date">2013 — 2017 · IBM</span>
+        <h2>Subject Matter Expert <span class="role-at">/ Operations</span></h2>
+        <ul class="bullets">
+          <li>Advanced to SME within a large global operation.</li>
+          <li>Built deep understanding of how enterprise-scale processes are structured, maintained and improved.</li>
+          <li>Mentored junior colleagues and contributed to quality standards and documentation.</li>
+        </ul>
+        <div class="meta">
+          <span class="chip">Global operations</span>
+          <span class="chip">Mentoring</span>
+        </div>
+      </div>
+      <div class="card-visual"><div class="art" data-art="checker" data-accent="#2e7d6f"></div></div>
+    </article>
+
+    <!-- HOSTWAY -->
+    <article class="card reverse" data-cat="experience"
+      style="--bg:#9cbfe9; --fg:#11233d; --shape:#84abdd;">
+      <div class="card-text">
+        <span class="card-date">2011 — 2013 · US Hosting Company · Where it started</span>
+        <h2>Customer Support Agent</h2>
+        <ul class="bullets">
+          <li>Learned customer-first communication: listening properly and understanding what people actually need.</li>
+          <li>Developed product fluency across hosting services — upselling through relevance, not pressure.</li>
+        </ul>
+        <div class="meta">
+          <span class="chip">Customer empathy</span>
+          <span class="chip">Product fluency</span>
+        </div>
+      </div>
+      <div class="card-visual"><div class="art" data-art="waves" data-accent="#f3f8ff"></div></div>
+    </article>
+
+    <!-- SKILLS -->
+    <article class="card" data-cat="more"
+      style="--bg:#1f6b54; --fg:#e3f3ec; --shape:#175442;">
+      <div class="card-text">
+        <span class="card-date">Skills</span>
+        <h2>What I bring to a delivery team</h2>
+        <div class="meta">
+          <span class="chip">Delivery &amp; program management</span>
+          <span class="chip">Agile &amp; Scrum facilitation</span>
+          <span class="chip">Client relationship management</span>
+          <span class="chip">Sprint planning &amp; retrospectives</span>
+          <span class="chip">Team coaching &amp; development</span>
+          <span class="chip">Stakeholder communication</span>
+          <span class="chip">Scope &amp; risk tracking</span>
+          <span class="chip">Jira · Confluence</span>
+          <span class="chip">Distributed &amp; remote teams</span>
+          <span class="chip">English — fluent</span>
+        </div>
+      </div>
+      <div class="card-visual"><div class="art" data-art="dots" data-accent="#c6d84a"></div></div>
+    </article>
+
+    <!-- HOW I WORK -->
+    <article class="card reverse" id="approach" data-cat="more"
+      style="--bg:#c8a8e0; --fg:#2c1840; --shape:#b692d6;">
+      <div class="card-text">
+        <span class="card-date">How I work</span>
+        <h2>AI in the loop, thinking in the lead</h2>
+        <p>I use AI-assisted tools daily — for analysis, documentation, planning and workshop prep, or simply to explore different approaches to a problem. Like any tool, they’re only as good as the thinking behind them; used carefully, they noticeably improve both the quality and the speed of decisions.</p>
+        <div class="meta">
+          <span class="chip">AI-assisted analysis</span>
+          <span class="chip">Documentation</span>
+          <span class="chip">Planning</span>
+        </div>
+      </div>
+      <div class="card-visual"><div class="art" data-art="nodes" data-accent="#ffffff"></div></div>
+    </article>
+
+    <!-- CONTACT -->
+    <article class="card" id="contact" data-cat="more"
+      style="--bg:#d8c8a4; --fg:#33270f; --shape:#c7b48c;">
+      <div class="card-text">
+        <span class="card-date">Contact</span>
+        <h2>Let’s talk about your delivery challenge</h2>
+        <p>I’m looking for a role where I can own client relationships, keep remote delivery teams aligned, and help the people around me grow. I’d welcome a conversation about how my experience could support your team.</p>
+        <div class="meta">
+          <span class="chip">mitko.slavkov@gmail.com</span>
+          <span class="chip">linkedin.com/in/dimitar-dimitrov-77460396</span>
+          <span class="chip">Sofia · available within 1–2 months</span>
+        </div>
+        <a class="card-link" href="Cover-Letter.html">Read my cover letter →</a>
+      </div>
+      <div class="card-visual"><div class="art" data-art="bauhaus" data-accent="#7a2722"></div></div>
+    </article>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-col">
+          <div class="foot-mono">Dimitar Slavkov Dimitrov</div>
+          <p style="opacity:.6; margin-top:14px; font-size:14.5px; max-width:30ch; line-height:1.55;">Senior project &amp; program manager. Sofia, Bulgaria.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Explore</h4>
+          <a href="#about">About</a>
+          <a href="#work">Experience</a>
+          <a href="Cover-Letter.html">Cover letter</a>
+        </div>
+        <div class="foot-col">
+          <h4>Elsewhere</h4>
+          <a href="https://www.linkedin.com/in/dimitar-dimitrov-77460396/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#">Download CV (PDF)</a>
+        </div>
+        <div class="foot-col">
+          <h4>Contact</h4>
+          <a href="mailto:mitko.slavkov@gmail.com">mitko.slavkov@gmail.com</a>
+          <a href="#contact">Available within 1–2 months</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Dimitar Slavkov Dimitrov</span>
+        <span>Sofia, Bulgaria</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ---------- Filters ----------
+    const filterBar = document.getElementById('filters');
+    const cards = [...document.querySelectorAll('.card')];
+    filterBar.addEventListener('click', (e) => {
+      const btn = e.target.closest('button');
+      if (!btn) return;
+      filterBar.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(c => {
+        const show = f === 'all' || c.dataset.cat === f;
+        c.style.display = show ? '' : 'none';
+        if (show && !c.classList.contains('in')) {
+          requestAnimationFrame(() => c.classList.add('in'));
+        }
+      });
+    });
+
+    // ---------- Scroll reveal ----------
+    const reveal = (c) => c.classList.add('in');
+    const revealAll = () => cards.forEach(reveal);
+    document.body.classList.add('anim');
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) { reveal(en.target); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      cards.forEach(c => io.observe(c));
+    } else {
+      revealAll();
+    }
+
+    // Safety fallbacks: never leave content permanently hidden if scroll/IO is quirky.
+    window.addEventListener('scroll', revealAll, { once: true, passive: true });
+    if (document.documentElement.scrollHeight <= window.innerHeight + 40) revealAll();
+    setTimeout(revealAll, 1400);
+  </script>
+
+  <script>
+    // ---------- Generative card art ----------
+    (function () {
+      const NS = 'http://www.w3.org/2000/svg';
+      const svg = (inner) =>
+        `<svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" xmlns="${NS}">${inner}</svg>`;
+
+      const motifs = {
+        rings(ink, acc) {
+          let s = '';
+          for (let r = 24; r <= 210; r += 26)
+            s += `<circle cx="272" cy="150" r="${r}" fill="none" stroke="${ink}" stroke-width="2" opacity="0.45"/>`;
+          s += `<circle cx="272" cy="150" r="34" fill="${acc}"/>`;
+          return svg(s);
+        },
+        arcs(ink, acc) {
+          let s = '';
+          for (let i = 1; i <= 7; i++) {
+            const r = i * 52;
+            const big = i % 3 === 0;
+            s += `<path d="M 0 ${400 - r} A ${r} ${r} 0 0 1 ${r} 400" fill="none" stroke="${big ? acc : ink}" stroke-width="${big ? 7 : 2.5}" opacity="${big ? 0.95 : 0.4}"/>`;
+          }
+          return svg(s);
+        },
+        waves(ink, acc) {
+          let s = '';
+          for (let i = 0; i < 8; i++) {
+            const y = 50 + i * 42, big = i % 3 === 0;
+            s += `<path d="M -20 ${y} Q 80 ${y - 38} 190 ${y} T 420 ${y}" fill="none" stroke="${big ? acc : ink}" stroke-width="${big ? 6 : 2.5}" opacity="${big ? 0.95 : 0.4}"/>`;
+          }
+          return svg(s);
+        },
+        columns(ink, acc) {
+          const hs = [120, 210, 150, 270, 95, 185, 235, 140];
+          let s = '';
+          hs.forEach((h, i) => {
+            const x = 32 + i * 46, on = i % 3 === 1;
+            s += `<rect x="${x}" y="${370 - h}" width="28" height="${h}" rx="7" fill="${on ? acc : ink}" opacity="${on ? 0.95 : 0.4}"/>`;
+          });
+          return svg(s);
+        },
+        orbit(ink, acc) {
+          let s = `<circle cx="200" cy="200" r="86" fill="none" stroke="${ink}" stroke-width="2" opacity="0.5"/>`;
+          s += `<circle cx="200" cy="200" r="150" fill="none" stroke="${ink}" stroke-width="2" opacity="0.3"/>`;
+          const pts = [[200, 50], [350, 200], [200, 350], [50, 200], [306, 94], [94, 306]];
+          pts.forEach((p, i) => s += `<circle cx="${p[0]}" cy="${p[1]}" r="${i === 0 ? 0 : 13}" fill="${ink}" opacity="0.6"/>`);
+          s += `<circle cx="200" cy="200" r="32" fill="${acc}"/>`;
+          return svg(s);
+        },
+        checker(ink, acc) {
+          let s = '';
+          const n = 8, sz = 56;
+          for (let r = 0; r < n; r++)
+            for (let c = 0; c < n; c++)
+              if ((r + c) % 2 === 0) {
+                const hot = r === c || r === c + 1;
+                s += `<rect x="${c * sz - 24}" y="${r * sz - 24}" width="${sz}" height="${sz}" fill="${hot ? acc : ink}" opacity="${hot ? 0.9 : 0.16}"/>`;
+              }
+          return svg(s);
+        },
+        dots(ink, acc) {
+          let s = '';
+          for (let r = 0; r < 8; r++)
+            for (let c = 0; c < 8; c++) {
+              const x = 30 + c * 48, y = 30 + r * 48;
+              const rad = 2 + ((r + c) / 14) * 8;
+              const hot = c - r === 0 || c - r === 1;
+              s += `<circle cx="${x}" cy="${y}" r="${rad}" fill="${hot ? acc : ink}" opacity="${hot ? 0.95 : 0.38}"/>`;
+            }
+          return svg(s);
+        },
+        nodes(ink, acc) {
+          const N = [[78, 92], [200, 56], [322, 120], [120, 222], [272, 240], [180, 342], [340, 300]];
+          const E = [[0, 1], [1, 2], [0, 3], [1, 4], [3, 4], [3, 5], [4, 5], [4, 6], [2, 6]];
+          let s = '';
+          E.forEach(e => s += `<line x1="${N[e[0]][0]}" y1="${N[e[0]][1]}" x2="${N[e[1]][0]}" y2="${N[e[1]][1]}" stroke="${ink}" stroke-width="2" opacity="0.38"/>`);
+          N.forEach((p, i) => s += `<circle cx="${p[0]}" cy="${p[1]}" r="${i % 3 === 0 ? 16 : 9}" fill="${i % 3 === 0 ? acc : ink}" opacity="${i % 3 === 0 ? 1 : 0.7}"/>`);
+          return svg(s);
+        },
+        bauhaus(ink, acc) {
+          let s = `<rect x="40" y="56" width="150" height="150" fill="${ink}" opacity="0.82"/>`;
+          s += `<circle cx="282" cy="132" r="82" fill="${acc}"/>`;
+          s += `<path d="M70 360 L 205 196 L 340 360 Z" fill="${ink}" opacity="0.5"/>`;
+          s += `<rect x="40" y="318" width="320" height="13" fill="${acc}"/>`;
+          return svg(s);
+        },
+      };
+
+      document.querySelectorAll('.card-visual .art').forEach((el) => {
+        const cs = getComputedStyle(el.closest('.card'));
+        const ink = (cs.getPropertyValue('--fg') || '#000').trim();
+        const acc = el.dataset.accent || ink;
+        const fn = motifs[el.dataset.art] || motifs.rings;
+        el.innerHTML = fn(ink, acc);
+      });
+    })();
+  </script>
+
+  <div id="tweaks-root"></div>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel">
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "headingFont": "Playfair",
+      "background": "Slate",
+      "radius": 30
+    }/*EDITMODE-END*/;
+
+    const FONTS = {
+      Caslon:   ['"Libre Caslon Display", Georgia, serif', '"Libre Caslon Text", Georgia, serif'],
+      "DM Serif":['"DM Serif Display", Georgia, serif', '"DM Serif Display", Georgia, serif'],
+      Playfair: ['"Playfair Display", Georgia, serif', '"Playfair Display", Georgia, serif'],
+    };
+    const BG = {
+      Ink:   ['#0b0b0c', '#f3f1ec'],
+      Slate: ['#16181d', '#f3f1ec'],
+      Bone:  ['#f3f1ec', '#1a1a1a'],
+    };
+
+    function TweakApp() {
+      const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+      React.useEffect(() => {
+        const r = document.documentElement.style;
+        const [disp, text] = FONTS[t.headingFont] || FONTS.Caslon;
+        r.setProperty('--serif-display', disp);
+        r.setProperty('--serif-text', text);
+        const [bg, fg] = BG[t.background] || BG.Ink;
+        r.setProperty('--page-bg', bg);
+        r.setProperty('--page-fg', fg);
+        r.setProperty('--radius', t.radius + 'px');
+      }, [t.headingFont, t.background, t.radius]);
+
+      return (
+        <TweaksPanel>
+          <TweakSection label="Type" />
+          <TweakSelect label="Heading font" value={t.headingFont}
+            options={['Caslon', 'DM Serif', 'Playfair']}
+            onChange={(v) => setTweak('headingFont', v)} />
+          <TweakSection label="Surface" />
+          <TweakRadio label="Page" value={t.background}
+            options={['Ink', 'Slate', 'Bone']}
+            onChange={(v) => setTweak('background', v)} />
+          <TweakSlider label="Card corners" value={t.radius} min={10} max={44} step={2} unit="px"
+            onChange={(v) => setTweak('radius', v)} />
+        </TweaksPanel>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<TweakApp />);
+  </script>
+
+</body>
+</html>
