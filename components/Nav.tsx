@@ -11,7 +11,7 @@ export default function Nav() {
           <Link href="/cover-letter">Cover Letter</Link>
           <a href="#contact">Contact</a>
         </nav>
-        <a className={styles.cta} href="#">
+        <a className={styles.cta} href="/dimitar-slavkov-dimitrov-resume.pdf" download>
           Download CV
         </a>
       </div>

@@ -20,7 +20,7 @@ export default function Footer() {
           <a href="https://www.linkedin.com/in/dimitar-dimitrov-77460396/" target="_blank" rel="noopener">
             LinkedIn
           </a>
-          <a href="#">Download CV (PDF)</a>
+          <a href="/dimitar-slavkov-dimitrov-resume.pdf" download>Download CV (PDF)</a>
         </div>
         <div className={styles.col}>
           <h4>Contact</h4>

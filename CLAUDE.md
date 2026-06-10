@@ -68,9 +68,8 @@ and finalized contact details), and the `Resume.html` / `Cover-Letter.html` prot
 extending the site (new cards, copy changes, new motifs), check these against the current
 implementation in `data/cards.ts` and `components/CardArt.tsx`.
 
-## Known placeholders
+## Assets
 
-- The "Download CV" nav button and footer "Download CV (PDF)" link both point to `#` — no PDF
-  asset has been provided yet.
-- Experience date ranges (Athlon, HP Affiliate, IBM, US Hosting Company) are still
-  approximate per the handoff and should be confirmed before launch.
+- `public/dimitar-slavkov-dimitrov-resume.pdf` — the downloadable CV, linked from the nav
+  "Download CV" button and the footer "Download CV (PDF)" link (both with a `download`
+  attribute).
