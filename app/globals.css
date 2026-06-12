@@ -33,6 +33,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   letter-spacing: -0.005em;
+  overflow-x: hidden;
 }
 
 a {
