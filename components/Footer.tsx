@@ -1,36 +1,38 @@
 import Link from "next/link";
 import styles from "./Footer.module.css";
+import { person } from "@/data/resume";
 
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={`wrap ${styles.grid}`}>
-        <div className={styles.col}>
-          <div className={styles.brandName}>Dimitar Slavkov Dimitrov</div>
-          <p className={styles.blurb}>Senior project &amp; program manager. Sofia, Bulgaria.</p>
+      <div className={`sheet ${styles.grid}`}>
+        <div>
+          <div className={styles.name}>
+            {person.name.line1} {person.name.line2}
+          </div>
+          <p>
+            Senior project & program manager. {person.location}. Open to relocation &
+            remote.
+          </p>
         </div>
-        <div className={styles.col}>
-          <h4>Explore</h4>
-          <a href="#about">About</a>
-          <a href="#work">Experience</a>
-          <Link href="/cover-letter">Cover letter</Link>
-        </div>
-        <div className={styles.col}>
-          <h4>Elsewhere</h4>
-          <a href="https://www.linkedin.com/in/dimitar-dimitrov-77460396/" target="_blank" rel="noopener">
+        <div>
+          <h4>Contact</h4>
+          <a href={`mailto:${person.email}`}>Email</a>
+          <a href={person.linkedin.url} target="_blank" rel="noopener">
             LinkedIn
           </a>
-          <a href="/dimitar-slavkov-dimitrov-resume.pdf" download>Download CV (PDF)</a>
         </div>
-        <div className={styles.col}>
-          <h4>Contact</h4>
-          <a href="mailto:mitko.slavkov@gmail.com">mitko.slavkov@gmail.com</a>
-          <a href="#contact">Available within 1–2 months</a>
+        <div>
+          <h4>More</h4>
+          <Link href="/cover-letter">Cover letter</Link>
+          <Link href="/cv">Download CV (PDF)</Link>
         </div>
       </div>
-      <div className={`wrap ${styles.bottom}`}>
-        <span>© 2026 Dimitar Slavkov Dimitrov</span>
-        <span>Sofia, Bulgaria</span>
+      <div className={`sheet ${styles.bottom}`}>
+        <span>
+          © 2026 {person.name.line1} {person.name.line2}
+        </span>
+        <span>{person.availability}</span>
       </div>
     </footer>
   );

@@ -1,0 +1,39 @@
+.secHead {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--rule-2);
+  margin-bottom: clamp(28px, 4vw, 44px);
+  flex-wrap: wrap;
+}
+
+.n {
+  font-family: var(--display);
+  color: var(--accent-deep);
+  font-size: clamp(32px, 5.2vw, 76px);
+  line-height: 0.8;
+}
+
+.heading {
+  font-family: var(--display);
+  text-transform: uppercase;
+  font-size: clamp(32px, 5.2vw, 76px);
+  line-height: 0.8;
+  letter-spacing: 0.012em;
+}
+
+.note {
+  margin-left: auto;
+  max-width: 32ch;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 720px) {
+  .note {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+}

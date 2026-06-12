@@ -1,0 +1,59 @@
+.manifesto {
+  position: relative;
+  background: #b06a2c url("/assets/wood.jpg") center/cover;
+  color: #f7f4ed;
+  overflow: hidden;
+}
+
+.manifesto::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 10, 2, 0.3), rgba(18, 10, 2, 0.2));
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  padding: clamp(52px, 8vw, 116px) 0;
+}
+
+.idx {
+  font-size: 12.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.82);
+  display: block;
+  margin-bottom: 36px;
+}
+
+.lines {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vw, 24px);
+}
+
+.lines li {
+  font-family: var(--display);
+  text-transform: uppercase;
+  font-size: clamp(28px, 5.2vw, 78px);
+  line-height: 0.92;
+  letter-spacing: 0.012em;
+}
+
+.lines li b {
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.by {
+  margin-top: 44px;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(247, 244, 237, 0.72);
+}

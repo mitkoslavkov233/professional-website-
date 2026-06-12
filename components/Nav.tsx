@@ -1,19 +1,31 @@
 import Link from "next/link";
 import styles from "./Nav.module.css";
+import MobileMenuToggle from "./MobileMenuToggle";
+import { nav } from "@/data/resume";
 
 export default function Nav() {
   return (
     <header className={styles.nav}>
-      <div className={`wrap ${styles.inner}`}>
-        <nav className={styles.links}>
-          <a href="#work">Experience</a>
-          <a href="#about">About</a>
-          <Link href="/cover-letter">Cover Letter</Link>
-          <a href="#contact">Contact</a>
+      <div className={`sheet ${styles.row}`}>
+        <nav className={styles.navPill}>
+          {nav.links.map((link) =>
+            link.href.startsWith("/") ? (
+              <Link key={link.href} href={link.href}>
+                {link.label}
+              </Link>
+            ) : (
+              <a key={link.href} href={link.href}>
+                {link.label}
+              </a>
+            )
+          )}
         </nav>
-        <a className={styles.cta} href="/dimitar-slavkov-dimitrov-resume.pdf" download>
-          Download CV
-        </a>
+        <div className={styles.navRight}>
+          <Link className={styles.navCta} href={nav.cta.href}>
+            {nav.cta.label}
+          </Link>
+          <MobileMenuToggle links={nav.links} />
+        </div>
       </div>
     </header>
   );

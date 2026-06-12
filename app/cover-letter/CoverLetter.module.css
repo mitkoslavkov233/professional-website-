@@ -1,171 +1,172 @@
 .page {
-  --ink: #1c1a17;
-  --paper: #f4f0e8;
-  --accent: #cf522c;
+  background: #ffffff;
+  color: var(--ink);
   min-height: 100vh;
 }
 
 .topbar {
   max-width: 820px;
   margin: 0 auto;
-  padding: 22px 24px;
+  padding: 18px clamp(20px, 5vw, 44px);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  z-index: 2;
 }
 
 .back {
-  color: var(--paper);
+  color: var(--ink);
   text-decoration: none;
-  opacity: 0.7;
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.01em;
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: opacity 0.2s, gap 0.2s;
+  transition: gap 0.2s;
 }
 
 .back:hover {
-  opacity: 1;
   gap: 12px;
+  color: var(--accent-deep);
 }
 
 .printBtn {
   font-family: var(--sans);
   font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  font-weight: 700;
+  letter-spacing: 0.01em;
   cursor: pointer;
   white-space: nowrap;
-  color: #16181d;
-  background: var(--paper);
+  color: #fff;
+  background: var(--ink);
   border: none;
-  padding: 9px 18px;
+  padding: 11px 20px;
   border-radius: 999px;
-  transition: transform 0.2s, background 0.2s;
+  transition: transform 0.2s;
 }
 
 .printBtn:hover {
   transform: translateY(-1px);
-  background: #fff;
 }
 
 .sheet {
   max-width: 820px;
-  margin: 6px auto 70px;
-  background: var(--paper);
-  color: var(--ink);
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow: 0 40px 90px -50px rgba(0, 0, 0, 0.7);
-}
-
-.sheetInner {
-  padding: 72px clamp(36px, 7vw, 88px) 64px;
+  margin: 8px auto 90px;
+  position: relative;
+  z-index: 1;
+  padding: 0 clamp(20px, 5vw, 44px);
 }
 
 .letterhead {
   padding-bottom: 26px;
-  border-bottom: 1px solid color-mix(in oklab, var(--ink), transparent 86%);
+  border-bottom: 1px solid var(--rule);
 }
 
 .letterhead .name {
-  font-family: var(--serif-display);
-  font-weight: 700;
-  font-size: clamp(32px, 4.6vw, 46px);
-  line-height: 1.02;
-  letter-spacing: -0.01em;
+  font-family: var(--display);
+  text-transform: uppercase;
+  font-size: clamp(46px, 8.5vw, 96px);
+  line-height: 0.86;
+  letter-spacing: 0.012em;
 }
 
 .letterhead .role {
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-top: 14px;
+  color: var(--accent-deep);
+  margin-top: 18px;
 }
 
 .letterhead .lhMeta {
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.6;
-  opacity: 0.6;
-  margin-top: 14px;
+  color: var(--ink-soft);
+  margin-top: 10px;
 }
 
 .salutation {
-  margin-top: 40px;
-  font-size: 18px;
+  margin-top: 44px;
+  font-size: 21px;
   font-weight: 600;
 }
 
 .letter p {
-  font-size: 16.5px;
+  font-size: clamp(16px, 1.55vw, 18px);
   line-height: 1.72;
-  margin-top: 20px;
-  max-width: 64ch;
+  margin-top: 22px;
+  max-width: 66ch;
+  color: #2c2820;
   text-wrap: pretty;
 }
 
 .letter p .lead {
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 .editable {
-  border-bottom: 1.5px dashed color-mix(in oklab, var(--accent), transparent 40%);
+  border-bottom: 1.5px dashed color-mix(in oklab, var(--accent-deep), transparent 30%);
   padding-bottom: 1px;
 }
 
 .signoff {
-  margin-top: 34px;
+  margin-top: 38px;
+}
+
+.signoff .small {
+  font-size: 16px;
+  color: var(--ink-soft);
 }
 
 .signoff .name {
-  font-family: var(--serif-display);
-  font-size: 26px;
-  margin-top: 6px;
+  font-family: var(--display);
+  text-transform: uppercase;
+  font-size: 30px;
+  letter-spacing: 0.02em;
+  margin-top: 10px;
 }
 
 .sheetFoot {
-  margin-top: 40px;
+  margin-top: 44px;
   padding-top: 22px;
-  border-top: 1px solid color-mix(in oklab, var(--ink), transparent 86%);
+  border-top: 1px solid var(--rule);
   font-size: 13px;
-  opacity: 0.6;
+  color: var(--ink-soft);
   display: flex;
-  gap: 8px 18px;
+  gap: 8px 16px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .sheetFoot a {
-  color: inherit;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink-soft);
+}
+
+.sheetFoot a:hover {
+  color: var(--accent-deep);
+  border-color: var(--accent-deep);
 }
 
 @media print {
-  .page {
-    background: #fff;
+  @page {
+    margin: 16mm;
   }
   .topbar {
     display: none;
   }
   .sheet {
-    box-shadow: none;
-    border-radius: 0;
     margin: 0;
     max-width: none;
-  }
-  .sheetInner {
     padding: 0;
   }
   .editable {
     border-bottom: none;
   }
-}
-
-@page {
-  margin: 18mm;
 }

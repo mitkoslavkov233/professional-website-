@@ -1,66 +1,70 @@
 .footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 56px 24px 40px;
+  background: var(--ink);
+  color: var(--concrete);
+  padding: clamp(44px, 6vw, 72px) 0 38px;
+  position: relative;
+  z-index: 1;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1.4fr repeat(3, 1fr);
-  gap: 40px;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 36px;
 }
 
-.brandName {
-  font-family: var(--serif-display);
-  font-size: 30px;
-}
-
-.blurb {
-  opacity: 0.6;
-  margin-top: 14px;
-  font-size: 14.5px;
-  max-width: 30ch;
-  line-height: 1.55;
-}
-
-.col h4 {
-  font-size: 12px;
-  letter-spacing: 0.12em;
+.name {
+  font-family: var(--display);
   text-transform: uppercase;
-  opacity: 0.45;
-  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: 0.02em;
+}
+
+.grid p {
+  font-size: 14px;
+  line-height: 1.55;
+  margin-top: 14px;
+  max-width: 30ch;
+  color: rgba(216, 212, 205, 0.72);
+}
+
+.grid h4 {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
   margin-bottom: 16px;
 }
 
-.col a {
+.grid a {
   display: block;
-  color: var(--page-fg);
+  color: var(--concrete);
   text-decoration: none;
   font-size: 14.5px;
-  opacity: 0.72;
   margin-bottom: 11px;
-  transition: opacity 0.2s;
+  opacity: 0.85;
 }
 
-.col a:hover {
+.grid a:hover {
   opacity: 1;
+  color: var(--accent);
 }
 
 .bottom {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-top: 54px;
-  padding-top: 22px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 13px;
-  opacity: 0.5;
+  margin-top: 46px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(216, 212, 205, 0.2);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: rgba(216, 212, 205, 0.55);
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
 }
 
 @media (max-width: 720px) {
   .grid {
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
   }
 }
