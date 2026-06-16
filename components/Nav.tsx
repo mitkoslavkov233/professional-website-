@@ -20,10 +20,10 @@ export default function Nav() {
     <header className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}>
       <div className={`sheet ${styles.row}`}>
         <NavLinks links={nav.links} />
-        <div className={styles.navRight}>
-          <Link className={styles.navCta} href={nav.cta.href}>
-            {nav.cta.label}
-          </Link>
+        <Link className={styles.navCta} href={nav.cta.href}>
+          {nav.cta.label}
+        </Link>
+        <div className={styles.toggleWrap}>
           <MobileMenuToggle links={nav.links} />
         </div>
       </div>
