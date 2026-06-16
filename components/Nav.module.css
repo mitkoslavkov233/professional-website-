@@ -13,6 +13,7 @@
 }
 
 .navPill {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 2px;
@@ -24,6 +25,8 @@
 }
 
 .navPill a {
+  position: relative;
+  z-index: 1;
   text-decoration: none;
   color: var(--ink);
   font-size: 13.5px;
@@ -38,6 +41,24 @@
   background: rgba(20, 19, 15, 0.07);
 }
 
+.activeIndicator {
+  position: absolute;
+  z-index: 0;
+  top: 6px;
+  bottom: 6px;
+  left: 0;
+  border-radius: 999px;
+  background: rgba(200, 198, 58, 0.35);
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), width 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .activeIndicator {
+    transition: none;
+  }
+}
+
 .navCta {
   text-decoration: none;
   font-size: 13.5px;
@@ -47,11 +68,12 @@
   background: var(--ink);
   padding: 12px 22px;
   border-radius: 999px;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .navCta:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(20, 19, 15, 0.18);
 }
 
 .navRight {

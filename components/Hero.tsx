@@ -1,3 +1,4 @@
+import Reveal from "./Reveal";
 import styles from "./Hero.module.css";
 import { person } from "@/data/resume";
 
@@ -6,24 +7,32 @@ export default function Hero() {
     <section className={styles.hero}>
       <div className="sheet">
         <div className={styles.inner}>
-          <span className={styles.kicker}>
+          <Reveal as="span" className={styles.kicker}>
             <span className={styles.dot} />
             {person.role} / Sofia, BG
-          </span>
-          <h1 className={styles.heading}>
+          </Reveal>
+          <Reveal as="h1" className={styles.heading} delay={90}>
             {person.name.line1}
             <br />
             {person.name.line2}
-          </h1>
-          <p className={styles.sub}>
+          </Reveal>
+          <Reveal as="p" className={styles.sub} delay={200}>
             Building trusted client relationships, leading distributed teams, and delivering
             complex digital work <span className={styles.strong}>without drama.</span>
-          </p>
+          </Reveal>
           <div className={styles.meta}>
-            <span className={`${styles.chip} ${styles.fill}`}>10+ yrs delivery</span>
-            <span className={styles.chip}>7 yrs agency</span>
-            <span className={`${styles.chip} ${styles.acc}`}>Available 1 to 2 mo</span>
-            <span className={styles.chip}>Relocation / Remote</span>
+            <Reveal as="span" className={`${styles.chip} ${styles.fill}`} delay={310}>
+              10+ yrs delivery
+            </Reveal>
+            <Reveal as="span" className={styles.chip} delay={360}>
+              7 yrs agency
+            </Reveal>
+            <Reveal as="span" className={`${styles.chip} ${styles.acc}`} delay={410}>
+              Available 1 to 2 mo
+            </Reveal>
+            <Reveal as="span" className={styles.chip} delay={460}>
+              Relocation / Remote
+            </Reveal>
           </div>
         </div>
       </div>

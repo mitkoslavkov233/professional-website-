@@ -1,3 +1,7 @@
+"use client";
+
+import { useRevealRef } from "./useReveal";
+import revealStyles from "./Reveal.module.css";
 import styles from "./SectionHead.module.css";
 
 interface SectionHeadProps {
@@ -7,8 +11,10 @@ interface SectionHeadProps {
 }
 
 export default function SectionHead({ number, heading, note }: SectionHeadProps) {
+  const ref = useRevealRef<HTMLDivElement>(revealStyles.reveal, revealStyles.in);
+
   return (
-    <div className={styles.secHead}>
+    <div ref={ref} className={styles.secHead}>
       <span className={styles.n}>{number}</span>
       <h2 className={styles.heading}>{heading}</h2>
       {note && <span className={styles.note}>{note}</span>}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Reveal from "./Reveal";
 import SectionHead from "./SectionHead";
 import styles from "./Contact.module.css";
 import { person } from "@/data/resume";
@@ -12,12 +13,12 @@ export default function Contact() {
           heading="Get in touch"
           note="Open to senior delivery roles. Let’s talk about the problem you’re solving."
         />
-        <div className={styles.cta}>
+        <Reveal as="div" className={styles.cta}>
           <a className={styles.big} href={`mailto:${person.email}`}>
             {person.email}
           </a>
-        </div>
-        <div className={styles.links}>
+        </Reveal>
+        <Reveal as="div" className={styles.links} delay={90}>
           <a href={person.linkedin.url} target="_blank" rel="noopener">
             LinkedIn
           </a>
@@ -26,7 +27,7 @@ export default function Contact() {
           <span className={styles.loc}>
             {person.location} · available {person.availabilityShort}
           </span>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

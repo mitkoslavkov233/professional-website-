@@ -1,3 +1,4 @@
+import Reveal from "./Reveal";
 import SectionHead from "./SectionHead";
 import styles from "./Experience.module.css";
 import { experience } from "@/data/resume";
@@ -11,8 +12,8 @@ export default function Experience() {
           heading="Experience"
           note="Fifteen years, four companies, one throughline: delivery that holds."
         />
-        {experience.map((job) => (
-          <div className={styles.row} key={job.id}>
+        {experience.map((job, i) => (
+          <Reveal as="div" className={styles.row} key={job.id} delay={Math.min(i, 2) * 70}>
             <div className={styles.meta}>
               <div className={styles.when}>{job.when}</div>
               <div className={styles.where}>{job.company}</div>
@@ -29,7 +30,7 @@ export default function Experience() {
               </ul>
               {job.tags && <div className={styles.tags}>{job.tags.join(" · ")}</div>}
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

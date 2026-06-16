@@ -1,3 +1,4 @@
+import Reveal from "./Reveal";
 import styles from "./Manifesto.module.css";
 import { manifesto } from "@/data/resume";
 
@@ -6,17 +7,21 @@ export default function Manifesto() {
     <section className={styles.manifesto} id="principles">
       <div className="sheet">
         <div className={styles.inner}>
-          <span className={styles.idx}>{manifesto.idx}</span>
+          <Reveal as="span" className={styles.idx}>
+            {manifesto.idx}
+          </Reveal>
           <ul className={styles.lines}>
-            {manifesto.lines.map((line) => (
-              <li key={line.text}>
+            {manifesto.lines.map((line, i) => (
+              <Reveal as="li" key={line.text} delay={i * 90}>
                 {line.text}
                 {line.strong && <b>{line.strong}</b>}
                 {line.suffix}
-              </li>
+              </Reveal>
             ))}
           </ul>
-          <div className={styles.by}>{manifesto.by}</div>
+          <Reveal as="div" className={styles.by} delay={manifesto.lines.length * 90}>
+            {manifesto.by}
+          </Reveal>
         </div>
       </div>
     </section>

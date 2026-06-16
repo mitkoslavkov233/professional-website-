@@ -43,11 +43,13 @@
   font-size: 14.5px;
   margin-bottom: 11px;
   opacity: 0.85;
+  transition: opacity 0.2s, color 0.2s, transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .grid a:hover {
   opacity: 1;
   color: var(--accent);
+  transform: translateX(4px);
 }
 
 .bottom {

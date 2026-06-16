@@ -1,3 +1,4 @@
+import Reveal from "./Reveal";
 import SectionHead from "./SectionHead";
 import styles from "./Skills.module.css";
 import { skillColumns } from "@/data/resume";
@@ -12,8 +13,8 @@ export default function Skills() {
           note="What I bring to a delivery team, day to day."
         />
         <div className={styles.services}>
-          {skillColumns.map((col) => (
-            <div className={styles.svc} key={col.index}>
+          {skillColumns.map((col, i) => (
+            <Reveal as="div" className={styles.svc} key={col.index} delay={i * 80}>
               <span className={styles.svcIdx}>{col.index}</span>
               <span className={styles.svcTitle}>{col.title}</span>
               <ul className={styles.svcList}>
@@ -21,7 +22,7 @@ export default function Skills() {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

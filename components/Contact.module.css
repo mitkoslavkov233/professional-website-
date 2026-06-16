@@ -38,15 +38,33 @@
 }
 
 .links a {
+  position: relative;
   color: var(--ink);
   text-decoration: none;
   border-bottom: 1px solid var(--ink-soft);
   padding-bottom: 2px;
+  transition: color 0.2s;
+}
+
+.links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--accent-deep);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .links a:hover {
   color: var(--accent-deep);
-  border-color: var(--accent-deep);
+}
+
+.links a:hover::after {
+  transform: scaleX(1);
 }
 
 .loc {
