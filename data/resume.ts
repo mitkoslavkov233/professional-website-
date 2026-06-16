@@ -171,6 +171,7 @@ export const nav = {
     { href: "#skills", label: "Skills" },
     { href: "#principles", label: "Approach" },
     { href: "#contact", label: "Contact" },
+    { href: "/cover-letter", label: "Cover Letter" },
   ],
   cta: { href: "/cv", label: "Download CV" },
 };
