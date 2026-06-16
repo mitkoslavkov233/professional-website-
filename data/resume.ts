@@ -166,9 +166,10 @@ export const manifesto = {
 
 export const nav = {
   links: [
+    { href: "#about", label: "Profile" },
     { href: "#experience", label: "Experience" },
+    { href: "#skills", label: "Skills" },
     { href: "#principles", label: "Approach" },
-    { href: "/cover-letter", label: "Cover letter" },
     { href: "#contact", label: "Contact" },
   ],
   cta: { href: "/cv", label: "Download CV" },
