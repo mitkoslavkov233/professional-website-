@@ -16,7 +16,6 @@
 .row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 16px;
 }
 
@@ -68,6 +67,7 @@
 }
 
 .navCta {
+  margin-left: auto;
   text-decoration: none;
   font-size: 13.5px;
   font-weight: 700;
