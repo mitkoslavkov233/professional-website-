@@ -37,10 +37,10 @@
   z-index: 1;
   text-decoration: none;
   color: var(--ink);
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 600;
   white-space: nowrap;
-  padding: 9px 16px;
+  padding: 9px 13px;
   border-radius: 999px;
   transition: background 0.2s;
 }
@@ -137,7 +137,7 @@
   display: none;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 800px) {
   .navPill {
     display: none;
   }
@@ -175,7 +175,7 @@
   }
 }
 
-@media (min-width: 641px) {
+@media (min-width: 801px) {
   .mobileMenu,
   .navToggle {
     display: none !important;
