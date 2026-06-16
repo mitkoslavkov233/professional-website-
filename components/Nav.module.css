@@ -130,10 +130,14 @@
   display: none;
 }
 
-/* Mobile: pill hides, CTA moves left, hamburger appears right */
+/* Mobile: pill hides, hamburger on left, CTA on right */
 @media (max-width: 700px) {
   .navPill {
     display: none;
+  }
+
+  .toggleWrap {
+    order: -1;
   }
 
   .navToggle {
